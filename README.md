@@ -1,5 +1,7 @@
 # libasm
-contrairement a libc, les fonctions {ft_strlen, ft_strcpy, ft_strcmp et ft_strdup} ne segfault pas si on passe un NULL en argument.
+contrairement a libc, les fonctions {ft_strlen, ft_strcpy, ft_strcmp et ft_strdup} de libasm sont proteges contre segfault si on passe un NULL en argument.
+
+
 **** Comment utiliser ? ****
 --------
 1. Make
