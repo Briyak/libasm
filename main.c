@@ -6,7 +6,7 @@
 /*   By: hael-bri <hael-bri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:16:10 by rchallie          #+#    #+#             */
-/*   Updated: 2021/05/21 18:03:55 by hael-bri         ###   ########.fr       */
+/*   Updated: 2021/05/24 14:36:07 by hael-bri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void check_write()
 	printf("ft_errno = %d\n", errno);
 	printf("\n|M| ==> the return value of ft_write is |%ld|\n", n);
 	n =    write(fd2 , s, bz);
-	printf("\n   errno = %d\n", errno);
+	printf("\n   errno = %d\n", errno); //errno test
 	printf("\n|O| ==> the return value of    write is |%ld|\n", n);
 	close(fd1);
 	close(fd2);
