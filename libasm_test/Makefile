@@ -6,11 +6,11 @@
 #    By: hael-bri <hael-bri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/08 03:06:59 by cacharle          #+#    #+#              #
-#    Updated: 2021/05/21 16:53:45 by hael-bri         ###   ########.fr        #
+#    Updated: 2021/05/24 14:59:29 by hael-bri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBASM_PATH = ../ref/
+LIBASM_PATH = ../srcs/
 RM = rm -fv
 MAKE = make --no-print-directory
 PYTHON = python3

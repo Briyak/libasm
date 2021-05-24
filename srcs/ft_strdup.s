@@ -6,8 +6,8 @@ segment .text
 
 ; ft_strdup(rdi= *s)
 _ft_strdup:
-	cmp rdi, 0
-	je exit
+	cmp rdi, 0						; if (s == NULL)
+	je null_exit
 	call	_ft_strlen
 	add		rax, 1			; rax = ft_strlen(s) + 1
 	push	rdi
@@ -18,6 +18,6 @@ _ft_strdup:
 	mov		rsi, rbx		; (ft_strcpy)src = rbx
 	call	_ft_strcpy		; rax = *s
 	ret
-exit:
-	xor rax, rax
+null_exit :
+	xor rax, rax					;return (NULL)
 	ret

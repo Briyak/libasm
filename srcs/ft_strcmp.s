@@ -3,6 +3,10 @@ segment .text
 
 ; ft_strcmp(rdi = *s1, rsi = *s2)
 _ft_strcmp:
+	cmp rdi, 0						; if (s1 == NULL)
+	je null_exit
+	cmp rsi, 0						; if (s2 == NULL)
+	je null_exit
 	mov 	rax, 0
 	mov		rbx, 0
 	jmp		_comparaison
@@ -23,3 +27,7 @@ _comparaison:
 _exit:
     sub		rax, rbx		; rax = rax - rbx
 	ret						; return (rax)
+
+null_exit :
+	xor rax, rax					;return (NULL)
+	ret

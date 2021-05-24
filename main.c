@@ -6,7 +6,7 @@
 /*   By: hael-bri <hael-bri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 14:16:10 by rchallie          #+#    #+#             */
-/*   Updated: 2021/05/24 14:36:07 by hael-bri         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:16:21 by hael-bri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void check_strlen()
 	printf("%-20s: %zu\n", "libasm", ft_strlen(alphabet));
 	printf("\nTEST OK\n");
 	
-	// ------- NULL = SEGFAULT
+// ------- NULL(libc) = SEGFAULT ------ NULL(libasm) != SEGFAULT
 	// printf("%-20s: \"%s\"\n", "char *", "NULL");
 	// printf("%-20s: 0\n", "expected lenght");
 	// printf("%-20s\n", "libc");
@@ -84,7 +84,7 @@ void check_strcpy()
 	clear_buffer(buffer, 30);
 	printf("\n");
 
-	// ------- NULL = SEGFAULT
+// ------- NULL(libc) = SEGFAULT ------ NULL(libasm) != SEGFAULT
 	// printf("%-20s: \"%s\"\n", "char []", "NULL");
 	// printf("%-20s: \"%s\"\n", "libc", strcpy(buffer, NULL));	
 	// clear_buffer(buffer, 30);
@@ -124,7 +124,7 @@ void check_strcmp()
 	printf("%-20s: \"%d\"\n", "libasm", ft_strcmp(empty, hello_world2));
 	printf("\n");
 
-	// ------- NULL = SEGFAULT
+// ------- NULL(libc) = SEGFAULT ------ NULL(libasm) != SEGFAULT
 	// printf("%-20s: \"%s\"\n", "char *", hello_world2);
 	// printf("%-20s: %s\n", "compared to", "NULL");
 	// printf("%-20s: \"%d\"\n", "libc", strcmp(NULL, hello_world2));
@@ -134,51 +134,51 @@ void check_strcmp()
 
 void check_write()
 {
-	// char *hello_world = "Coucou";
-	// char *empty = "";
+	char *hello_world = "Coucou";
+	char *empty = "";
 
-	// printf("\n================================\n");
-	// printf("========== FT_WRITE ============\n");
-	// printf("================================\n\n");
-	// int fd = open("test", O_CREAT| O_RDWR);
-	// int fd1 = open("test1", O_CREAT| O_RDWR);
-	// printf("%-20s: \"%s\"\n", "char *", hello_world);
-	// printf("%-20s: \"Libc:%zu\"\n", "libc", write(fd, hello_world, 7));
-	// // printf("\n");
-	// printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(fd1, hello_world, 7));
-	// printf("\n");
-	// printf("%-20s: \"%s\"\n", "char *", empty);
-	// printf("%-20s: \"Libc:%zu\"\n", "libc", write(1, empty, 0));
-	// // printf("\n");
-	// printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(1, empty, 0));
-	// printf("\n");
-	// printf("%-20s: \"%s\"\n", "char *", "NULL");
-	// printf("%-20s: \"Libc:%zu\"\n", "libc", write(-7, NULL, 7));
-	// // printf("\n");
-	// printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(-7, NULL, 7));
-	// // printf("\n");
+	printf("\n================================\n");
+	printf("========== FT_WRITE ============\n");
+	printf("================================\n\n");
+	int fd = open("test", O_CREAT| O_RDWR);
+	int fd1 = open("test1", O_CREAT| O_RDWR);
+	printf("%-20s: \"%s\"\n", "char *", hello_world);
+	printf("%-20s: \"Libc:%zu\"\n", "libc", write(fd, hello_world, 7));
+	printf("\n");
+	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(fd1, hello_world, 7));
+	printf("\n");
+	printf("%-20s: \"%s\"\n", "char *", empty);
+	printf("%-20s: \"Libc:%zu\"\n", "libc", write(1, empty, 0));
+	printf("\n");
+	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(1, empty, 0));
+	printf("\n");
+	printf("%-20s: \"%s\"\n", "char *", "NULL");
+	printf("%-20s: \"Libc:%zu\"\n", "libc", write(-7, NULL, 7));
+	printf("\n");
+	printf("%-20s: \"Libasm:%zu\"\n", "libasm", ft_write(-7, NULL, 7));
+	printf("\n");
 	
 
-	char		*s=NULL;
-	// char		*s1="hello world!";
-	int			bz;
-	ssize_t		n;
-	char		*s1="\xff";
-	char		*s2="\xffh";
+// 	char		*s=NULL;
+// 	char		*s1="hello world!";
+// 	int			bz;
+// 	ssize_t		n;
+// 	char		*s1="\xff";
+// 	char		*s2="\xffh";
 	
-	bz = -12;
-	int fd1 = open("test11", O_CREAT|O_RDWR, S_IRUSR|S_IWUSR);
-	int fd2 = open("test22", O_CREAT|O_RDWR, S_IRUSR|S_IWUSR);
-	n = ft_write(fd1, s, bz);
-	printf("ft_errno = %d\n", errno);
-	printf("\n|M| ==> the return value of ft_write is |%ld|\n", n);
-	n =    write(fd2 , s, bz);
-	printf("\n   errno = %d\n", errno); //errno test
-	printf("\n|O| ==> the return value of    write is |%ld|\n", n);
-	close(fd1);
-	close(fd2);
+// 	bz = -12;
+// 	int fd1 = open("test11", O_CREAT|O_RDWR, S_IRUSR|S_IWUSR);
+// 	int fd2 = open("test22", O_CREAT|O_RDWR, S_IRUSR|S_IWUSR);
+// 	n = ft_write(fd1, s, bz);
+// 	printf("ft_errno = %d\n", errno);
+// 	printf("\n|M| ==> the return value of ft_write is |%ld|\n", n);
+// 	n =    write(fd2 , s, bz);
+// 	printf("\n   errno = %d\n", errno); //errno test
+// 	printf("\n|O| ==> the return value of    write is |%ld|\n", n);
+// 	close(fd1);
+// 	close(fd2);
 	
-}
+// }
 
 void check_read()
 {
@@ -272,7 +272,7 @@ void check_strdup()
 	save2 = NULL;
 	printf("\n");
 
-	// ------- NULL = SEGFAULT
+// ------- NULL(libc) = SEGFAULT ------ NULL(libasm) != SEGFAULT
 	// printf("%-20s: NULL\n", "char *");
 	// save = strdup(NULL);
 	// printf("%-20s: \"%s\"\n", "libc", save);

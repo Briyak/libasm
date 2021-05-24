@@ -4,6 +4,8 @@ segment .text
 
 ; ft_strlen(rdi = char *s)
 _ft_strlen:
+	cmp rdi, 0						; if (s == NULL)
+	je null_exit
 	mov 	rax, 0 					; i = 0
 	jmp 	_loop
 
@@ -15,3 +17,7 @@ _loop:
 
 _exit:
 	ret								; return (i)
+
+null_exit :
+	xor rax, rax					;return (NULL)
+	ret
